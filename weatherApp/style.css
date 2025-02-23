@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Poppins", serif;
+    color: white;
+    font-weight: 600;
+}
+
+/* utilities start */
+
+.regular-txt {
+    font-weight: 400;
+}
+
+/* utilities end */
+
+body{
+    background: url(assets/assets/bg.jpg);
+    width: 100%;
+    height: 100dvh;
+    background-size: cover;   /* resmi bozmadan yerleştiriyor */
+    background-position: bottom;  /* aşağı doğru konumlandır */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body::before{    /** body etiketinden önce gösterilir */
+    content: "";   /** before elementini kullanmak istiyorsan bu tag da olacak */
+    position: absolute;  /** atasına yani body e göre konumladırılır */ 
+    width: 100%;   /** ekran genişliğinin tamamını kaplar*/
+    height: 100dvh;  /** dinamik bir şekilde tüm cihazlarda yüksekliğin tamamını kaplar */
+    background: rgb(0, 0, 0, 0.15);  /** sondaki alfa opaklık veriyor */
+    backdrop-filter: blur(15px);  /** buda blur sağlıyor*/
+}
+
+.main-container{
+    width: 300px;
+    height: 496px;
+    z-index: 1;   /** üstte hangisinin görünmesini istiyorsan*/
+    background: linear-gradient(
+        to top, rgba( 0, 0, 0, 0.15),
+    rgba(255, 255, 255, 0.15)); 
+    border-radius: 12px;
+    backdrop-filter: blur(100px);
+    padding: 20px;
+/**
+    Açıklama:
+
+Bu kod, bir HTML elementinin arka planına doğrusal bir renk geçişi ekler. Renkler, belirtilen yönde düz bir çizgi boyunca birbirine karışır.
+
+Detaylı Açıklama:
+
+background:: Arka plan özelliğini tanımlar.
+linear-gradient(): Doğrusal renk geçişi oluşturma fonksiyonudur.
+to top: Renk geçişinin yönünü belirtir (alttan üste). to bottom, to left, to right veya bir açı da kullanılabilir (örneğin, 45deg).
+rgb(0,0,0,0.15): İlk rengi tanımlar. Siyah rengin %15 opaklıkta (yarı saydam) olan halidir.
+rgb(255,255,255,0.15): İkinci rengi tanımlar. Beyaz rengin %15 opaklıkta (yarı saydam) olan halidir.
+Nasıl Çalışır?
+
+Kod, alttan yarı saydam siyah renkle başlar ve yukarı doğru yarı saydam beyaz renge doğru yumuşak bir geçiş oluşturur.
+
+Kullanım Alanları:
+
+Web sitelerinde arka planlara derinlik katmak
+İlgi çekici görsel efektler oluşturmak
+Renkleri daha dinamik bir şekilde kullanmak
+VS Code İpuçları:
+
+CSS dosyalarınızda bu kodu kullanabilirsiniz.
+VS Code'un renk seçicilerini kullanarak renkleri kolayca değiştirebilirsiniz.
+linear-gradient() fonksiyonunun farklı parametrelerini deneyerek farklı renk geçişleri oluşturabilirsiniz.
+*/
+}
+
+/*TODO Input Container Start */
+
+.input-container{
+    position: relative;
+/*  
+    Kapsayıcı Element: position: relative; özelliği, genellikle position: 
+    absolute; veya position: fixed; ile birlikte kullanılır. 
+    Bu durumlarda, position: relative; özelliği, altındaki absolute veya fixed konumlandırılmış elementler için bir "kapsayıcı" görevi görür. 
+    Yani, absolute veya fixed elementler,
+    relative konumlandırılmış bir üst element içinde konumlandırılır
+*/
+    margin-bottom: 25px;
+}
+
+.city-input{
+    width: 100%;
+    padding: 10px 16px;
+    border: 3px solid transparent;
+    border-radius: 99px;
+    background: rgba(0, 0, 0, 0.15);
+    outline: none;
+    font-weight: 500;
+    transition: 0.25, border;
+    padding-right: 45px;
+}
+
+.city-input:focus{
+    border: 3px solid rgb(0, 0, 0, 0.80);
+}
+.city-input::placeholder{
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.search-btn{
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    display: flex;
+}
+/*TODO Input Container End */
+
+/* section weather info start */
+
+.weather-info{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.location-date-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.location{
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+/* section weather info end */
+
+/* weather summary section */
+
+.weather-summary-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.weather-summary-img{
+    width: 120px;
+    height: 120px;
+}
+
+.weather-summary-info{
+    text-align: end;
+}
+/* weather summary section */
+
+
+/* weather-conditions-container Start */
+
+.weather-conditions-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.condition-item{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.condition-item i {
+    font-size: 25px;
+}
+
+
+/* weather-conditions-container End */
+
+
+
+/* forecast-items Start */
+
+.forecast-items-container{
+    display: flex;
+    gap: 15px;
+    padding-bottom:12px ;
+    overflow:scroll ;
+}
+
+.forecast-items-container::-webkit-scrollbar{
+    height: 8px;
+}
+.forecast-item::-webkit-scrollbar-track{
+    border-radius: 99px;
+    background: rgba(0, 0, 0, 0.1);
+}
+.forecast-items-container::-webkit-scrollbar-thumb{
+    background: rgba(0, 0, 0, 0.30);
+    border-radius: 99px;
+}
+
+.forecast-item{
+    min-width: 70px;
+    background: rgb(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 9px;
+    border-radius: 22px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.forecast-item:hover{
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.forecast-item-img{
+    width: 35px;
+    height: 35px;
+}
+
+/* forecast-items-container End */
+
+/*TODO SECTİON MESSAGE START */
+
+.section-message{
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.section-message img{
+    height: 180px;
+    width: fit-content;
+    /*? elementin içeriği aşıp taşmasınıda engeller yani auto dan daha iyi */
+/*
+    width: fit-content; CSS özelliği, bir HTML elementinin genişliğinin içeriğine uyum sağlamasını sağlar. Bu özellik, elementin içeriği kadar yer kaplamasına ve içeriği aştığında genişlemesine olanak tanır.
+
+width: fit-content;'in İşlevi
+
+İçeriğe Uygun Genişlik: Elementin genişliği, içindeki metin, resim veya diğer öğelerin toplam genişliğine göre otomatik olarak ayarlanır.
+Esneklik: İçerik değiştiğinde veya farklı ekran boyutlarında görüntülendiğinde, elementin genişliği de buna göre dinamik olarak değişir.
+Duyarlılık: fit-content özelliği, duyarlı web tasarımlarında (responsive web design) içeriğin farklı ekran boyutlarında doğru şekilde görüntülenmesini sağlamak için kullanışlıdır.
+width: fit-content;'in Kullanım Alanları
+
+Dinamik İçerik: İçeriği sık sık değişen veya farklı uzunluklarda olan elementler için idealdir. Örneğin, bir listedeki öğelerin uzunluğu değiştiğinde, listenin genişliği de buna göre otomatik olarak ayarlanır.
+Butonlar: Butonların içindeki metin uzunluğuna göre genişliklerinin ayarlanması için kullanılabilir.
+Etiketler: Etiketlerin içindeki metin uzunluğuna göre genişliklerinin ayarlanması için kullanılabilir.
+Resimler: Resimlerin kendi boyutlarında görüntülenmesini sağlamak için kullanılabilir.
+width: fit-content;'in Avantajları
+
+Kolay Kullanım: fit-content özelliği, karmaşık hesaplamalar yapmadan elementlerin genişliğini içeriğe uyarlamayı kolaylaştırır.
+Dinamiklik: İçerik değiştiğinde veya ekran boyutu değiştiğinde, elementin genişliği de otomatik olarak güncellenir.
+Duyarlılık: Duyarlı tasarımlarda içeriğin farklı ekran boyutlarında doğru şekilde görüntülenmesini sağlar.
+*/
+}
+
+/*TODO SECTİON MESSAGE START */
